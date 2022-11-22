@@ -13,6 +13,14 @@ entries:
     version: 0.0.2
   web-app:
   - apiVersion: v2
+    created: "2022-11-22T23:04:27.00910109Z"
+    description: Deploys a web application instrumented.
+    digest: bf35422725c3d689ead1b056e8ce66002df3e84abc38c6272098d3cf9c564413
+    name: web-app
+    urls:
+    - https://github.com/yafernandes/helm-charts/releases/download/web-app-0.0.3/web-app-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2022-11-22T18:25:35.678882894Z"
     description: Deploys a web application instrumented.
     digest: f80060738b39b148d31da2da5a8a849c28cb56f934d96dc0f3d31da66cb75693
@@ -28,4 +36,4 @@ entries:
     urls:
     - https://github.com/yafernandes/helm-charts/releases/download/web-app-0.0.1/web-app-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-22T18:25:35.678891394Z"
+generated: "2022-11-22T23:04:27.009112191Z"
