@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  sample-app:
+  - apiVersion: v2
+    created: "2022-11-22T14:29:31.695854926Z"
+    digest: fc9fca939ab73a51b9b3b90d8799d49373a10be73cff66c84b84f1d4be408ebf
+    home: The URL of this projects home page (optional)
+    keywords:
+    - A list of keywords about this project (optional)
+    name: sample-app
+    urls:
+    - https://github.com/yafernandes/helm-charts/releases/download/sample-app-0.0.2/sample-app-0.0.2.tgz
+    version: 0.0.2
+generated: "2022-11-22T14:29:31.695860726Z"
