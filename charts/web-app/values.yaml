@@ -8,7 +8,15 @@ application:
   service:
   env: lab
   version: 0.1
+  url: https://github.com/yafernandes/datadog-experience/releases/latest/download/servlet.war
+  endpoints:
+  - /servlet/hello_world
   appServer:
     image: tomcat:9.0
     webappsDir: /usr/local/tomcat/webapps
     port: 8080
+loadrunner:
+  startDelay: 5
+  interval:
+    minimum: 2
+    maximum: 5

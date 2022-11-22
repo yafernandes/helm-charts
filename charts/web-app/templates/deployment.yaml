@@ -22,16 +22,21 @@ spec:
     spec:
       initContainers:
         - name: init-copy-war
-          image: yaalexf/servlet:war
-          imagePullPolicy: Always
-          command: ["sh", "-c", "cp /build/* /webapps"]
+          image: alpine
+          command: ["sh", "-c", "--"]
+          args:
+          - |-
+            wget -P /webapps {{ .Values.application.url }}
           volumeMounts:
             - mountPath: /webapps
               name: webapps
         {{- if eq .Values.datadog.instrumentation "otel" }}
         - name: init-copy-otel
           image: alpine
-          command: ["sh", "-c", "wget -O /otel/opentelemetry-javaagent.jar https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar"]
+          command: ["sh", "-c", "--"]
+          args:
+          - |-
+            wget -O /otel/opentelemetry-javaagent.jar https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
           volumeMounts:
             - mountPath: /otel
               name: otel

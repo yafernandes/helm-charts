@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: loadrunner
+spec:
+  containers:
+    - name: load
+      image: alpine
+      imagePullPolicy: Always
+      command: ["sh", "-c", "--"]
+      args:
+        - |-
+          sleep {{ .Values.loadrunner.startDelay }}s
+          while true
+          do
+            {{- range .Values.application.endpoints }}
+            wget -qO /dev/nul  http://{{ $.Release.Name }}.{{ $.Release.Namespace }}:80{{ . }}
+            sleep $(echo "{{ $.Values.loadrunner.interval.minimum }} + ($RANDOM % 10 / 10) * ({{ $.Values.loadrunner.interval.maximum }} - {{ $.Values.loadrunner.interval.minimum }})" | bc)s
+            {{- end }} 
+          done
