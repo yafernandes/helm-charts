@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Release.Name }}
+        admission.datadoghq.com/enabled: "true"
+        tags.datadoghq.com/env:  {{ .Values.application.env }}
+        tags.datadoghq.com/service: {{ .Values.application.service | default .Release.Name }}
+        tags.datadoghq.com/version: {{ .Values.application.version | quote }}
+      annotations:
+      {{- if eq .Values.datadog.instrumentation "autoInstrumentation" }}
+        admission.datadoghq.com/java-lib.version: {{ .Values.datadog.tracerVersion | quote }}
+      {{- end }}
+    spec:
+      initContainers:
+        - name: init-copy-war
+          image: yaalexf/servlet:war
+          imagePullPolicy: Always
+          command: ["sh", "-c", "cp /build/* /webapps"]
+          volumeMounts:
+            - mountPath: /webapps
+              name: webapps
+      containers:
+        - name: appserver
+          image: {{ .Values.application.appServer.image | quote }}
+          env:
+            - name: DD_APPSEC_ENABLED
+              value: {{ .Values.datadog.appSec | quote }}
+            - name: DD_PROFILING_ENABLED
+              value: {{ .Values.datadog.profiling | quote }}
+          volumeMounts:
+            - mountPath: {{ .Values.application.appServer.webappsDir }}
+              name: webapps
+      volumes:
+        - name: webapps
+          emptyDir:

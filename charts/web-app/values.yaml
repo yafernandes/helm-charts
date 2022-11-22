@@ -1,0 +1,14 @@
+datadog:
+  admissionController: true
+  instrumentation: autoInstrumentation
+  tracerVersion: latest
+  appSec: false
+  profiling: false
+application:
+  service:
+  env: lab
+  version: 0.1
+  appServer:
+    image: tomcat:9.0
+    webappsDir: /usr/local/tomcat/webapps
+    port: 8080
