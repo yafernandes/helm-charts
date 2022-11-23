@@ -1,6 +1,6 @@
 ## Tested application servers
 
-[Tomcat](https://tomcat.apache.org/)
+[Tomcat](https://tomcat.apache.org/) - **Default**
 ```yaml
 application:
   appServer:
