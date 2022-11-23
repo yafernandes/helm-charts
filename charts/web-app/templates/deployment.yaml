@@ -16,7 +16,7 @@ spec:
         tags.datadoghq.com/service: {{ .Values.application.service | default .Release.Name }}
         tags.datadoghq.com/version: {{ .Values.application.version | quote }}
       annotations:
-      {{- if eq .Values.datadog.instrumentation "autoInstrumentation" }}
+      {{- if eq .Values.datadog.instrumentation "autoInjection" }}
         admission.datadoghq.com/java-lib.version: {{ .Values.datadog.tracerVersion | quote }}
       {{- end }}
     spec:

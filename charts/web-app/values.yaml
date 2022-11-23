@@ -1,6 +1,6 @@
 datadog:
   admissionController: true
-  instrumentation: autoInstrumentation
+  instrumentation: autoInjection
   tracerVersion: latest
   appSec: false
   profiling: false
