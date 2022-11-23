@@ -7,6 +7,8 @@ helm repo add alexf https://yafernandes.github.io/helm-charts
 helm install web-app alexf/web-app
 ```
 
+[OpenTelemetry](https://opentelemetry.io/) can be selected by adding `--set datadog.instrumentation=otel`.
+
 ## Tested application servers
 
 [Tomcat](https://tomcat.apache.org/) - **Default**
