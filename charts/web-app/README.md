@@ -7,6 +7,11 @@ helm repo add alexf https://yafernandes.github.io/helm-charts
 helm install web-app alexf/web-app
 ```
 
+If you want to just check the generated artifacts, without actually deploying anything, just use `template`, instead of `install`.
+
+The *loadrunner* pod generates traffic to the deployed application.
+
+
 [OpenTelemetry](https://opentelemetry.io/) can be selected by adding `--set datadog.instrumentation=otel`.
 
 ## Tested application servers
