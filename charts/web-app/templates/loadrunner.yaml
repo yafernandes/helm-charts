@@ -13,8 +13,8 @@ spec:
           sleep {{ .Values.loadrunner.startDelay }}s
           while true
           do
-            {{- range .Values.application.endpoints }}
+          {{- range .Values.application.endpoints }}
             wget -qO /dev/nul  http://{{ $.Release.Name }}.{{ $.Release.Namespace }}:80{{ . }}
             sleep $(echo "{{ $.Values.loadrunner.interval.minimum }} + ($RANDOM % 10 / 10) * ({{ $.Values.loadrunner.interval.maximum }} - {{ $.Values.loadrunner.interval.minimum }})" | bc)s
-            {{- end }} 
+          {{- end }} 
           done
