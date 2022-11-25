@@ -29,7 +29,7 @@ application:
 ```yaml
 application:
   appServer:
-    image: tomcat:9.0
+    image: tomcat:10.0
     webappsDir: /usr/local/tomcat/webapps
     port: 8080
   endpoints:
