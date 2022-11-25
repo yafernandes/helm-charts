@@ -16,7 +16,7 @@ The *loadrunner* pod generates traffic to the deployed application.
 
 ## Tested application servers
 
-[Tomcat](https://tomcat.apache.org/) - **Default**
+[Tomcat 9](https://tomcat.apache.org/) - **Default**
 ```yaml
 application:
   appServer:
@@ -25,13 +25,35 @@ application:
     port: 8080
 ```
 
-[Jetty](https://www.eclipse.org/jetty/)
+[Tomcat 10](https://tomcat.apache.org/)
+```yaml
+application:
+  appServer:
+    image: tomcat:9.0
+    webappsDir: /usr/local/tomcat/webapps
+    port: 8080
+  endpoints:
+  - /servlet/servletAPI5
+```
+
+[Jetty 10](https://www.eclipse.org/jetty/)
 ```yaml
 application:
   appServer:
     image: jetty:10-jre17-alpine
     webappsDir: /var/lib/jetty/webapps/
     port: 8080
+```
+
+[Jetty 11](https://www.eclipse.org/jetty/)
+```yaml
+application:
+  appServer:
+    image: jetty:11-jre17-alpine
+    webappsDir: /var/lib/jetty/webapps/
+    port: 8080
+  endpoints:
+  - /servlet/servletAPI5
 ```
 
 [Open Liberty](https://openliberty.io/)
@@ -43,11 +65,22 @@ application:
     port: 9080
 ```
 
-[WildFly](https://www.wildfly.org/)
+[WildFly 26](https://www.wildfly.org/)
 ```yaml
 application:
   appServer:
     image: quay.io/wildfly/wildfly:26.0.0.Final
     webappsDir: /opt/jboss/wildfly/standalone/deployments/
     port: 8080
+```
+
+[WildFly 27](https://www.wildfly.org/)
+```yaml
+application:
+  appServer:
+    image: quay.io/wildfly/wildfly:27.0.0.Final
+    webappsDir: /opt/jboss/wildfly/standalone/deployments/
+    port: 8080
+  endpoints:
+  - /servlet/servletAPI5
 ```
