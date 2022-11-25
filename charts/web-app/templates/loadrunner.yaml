@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: loadrunner
+  name: {{ .Release.Name }}-loadrunner
 spec:
   containers:
-    - name: load
+    - name: loadrunner
       image: alpine
       imagePullPolicy: Always
       command: ["sh", "-c", "--"]
