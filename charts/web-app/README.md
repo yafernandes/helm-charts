@@ -1,6 +1,6 @@
 ## Quick start
 
-The default set of values deploys this [sammple application](https://github.com/yafernandes/datadog-experience/tree/main/learn-by-example/java-servlet) on a Tomcat 9. The default also relies on [automatic injection](https://docs.datadoghq.com/tracing/trace_collection/admission_controller/) of tracing library using the [Admission Controler](https://docs.datadoghq.com/containers/cluster_agent/admission_controller/?tab=helmchart).
+The default set of values deploys this [sammple application](https://github.com/yafernandes/java-playground) on a Tomcat 9. The default also relies on [automatic injection](https://docs.datadoghq.com/tracing/trace_collection/admission_controller/) of tracing library using the [Admission Controler](https://docs.datadoghq.com/containers/cluster_agent/admission_controller/?tab=helmchart).
 
 ```bash
 helm repo add alexf https://yafernandes.github.io/helm-charts
@@ -33,7 +33,7 @@ application:
     webappsDir: /usr/local/tomcat/webapps
     port: 8080
   endpoints:
-  - /servlet/servletAPI5
+  - /playground/servletAPI5
 ```
 
 [Jetty 10](https://www.eclipse.org/jetty/)
@@ -53,7 +53,7 @@ application:
     webappsDir: /var/lib/jetty/webapps/
     port: 8080
   endpoints:
-  - /servlet/servletAPI5
+  - /playground/servletAPI5
 ```
 
 [Open Liberty](https://openliberty.io/)
@@ -82,5 +82,5 @@ application:
     webappsDir: /opt/jboss/wildfly/standalone/deployments/
     port: 8080
   endpoints:
-  - /servlet/servletAPI5
+  - /playground/servletAPI5
 ```

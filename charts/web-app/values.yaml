@@ -8,9 +8,9 @@ application:
   service:
   env: lab
   version: 0.1
-  url: https://github.com/yafernandes/datadog-experience/releases/latest/download/servlet.war
+  url: https://github.com/yafernandes/java-playground/releases/latest/download/playground.war
   endpoints:
-  - /servlet/servletAPI4
+  - /playground/servletAPI4
   appServer:
     image: tomcat:9.0
     webappsDir: /usr/local/tomcat/webapps
